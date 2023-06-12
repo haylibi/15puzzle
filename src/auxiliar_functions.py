@@ -60,3 +60,61 @@ def is_solvable(A,B):
     A1=[A[:4]]+[A[4:8]]+[A[8:12]]+[A[12:]]
     B1=[B[:4]]+[B[4:8]]+[B[8:12]]+[B[12:]]
     return par(A1)==par(B1)
+
+
+#Definicoes de copias de listas (para nao haver erros na execucao do codigo)
+def copy(A):
+    '''copia para executar os movimentos (estava a alterar o vertice depois da jogada)'''
+    K = []
+    for i in range(len(A)):
+        K.append([])
+        for j in range(len(A[i])):
+            K[i].append(0)
+            K[i][j] = A[i][j]
+    return K
+def copy2(A):
+    K = []
+    for i in range(len(A)):
+        K.append([])
+        for j in range(len(A[i])):
+            K[i].append(0)
+            K[i][j] = A[i][j]
+    K[0]=A[0]
+    return K
+def copia(n):
+    A=[]
+    for i in range(len(n)):
+        A.append([])
+        A[i] = n[i]
+    return A
+
+
+#Implementacao dos comandos para as buscas diferentes
+def makedescendants(node,visited_nodes):
+    '''Partindo dum vertice arbitrario, este comando gera uma lista com todos os vertices a que este se liga'''
+    A=[['l',left(node)],['r',right(node)],['d',down(node)],['u',up(node)]]
+    K=[]
+    for i in range(len(A)):
+       X = find_aux(A[i][1],visited_nodes)
+       if X == []:
+           K.append(A[i])
+    return K
+
+def findpath(vnodes,configFinal,path):
+    visited_nodes=copy(vnodes)
+    A=find_aux(configFinal,visited_nodes)
+    visited_nodes.remove([A,configFinal])
+    if A=='u':
+        path.append('u')
+        return findpath(visited_nodes,down(configFinal),path)
+    if A=='d':
+        path.append('d')
+        return findpath(visited_nodes,up(configFinal),path)
+    if A=='r':
+        path.append('r')
+        return findpath(visited_nodes,left(configFinal),path)
+    if A=='l':
+        path.append('l')
+        return findpath(visited_nodes,right(configFinal),path)
+    else:
+        return path
