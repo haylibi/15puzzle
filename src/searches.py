@@ -70,7 +70,7 @@ def bfs_2(configInicial,configFinal,vnodes,tempo):      #Caso onde configInicial
     return bfs_2(descendants,configFinal,visited_nodes,tempo)
 
 #Busca em Profundidade
-def depthfirst(configInicial,configFinal,max_depth):
+def depthfirst(configInicial,configFinal,max_depth, max_seconds):
     '''configInicial -> configuração Inicial; configFinal -> configuração final; max_depth-> nivel de profundidade desejada'''
     tempo=time.time()
     visited_nodes=[]
@@ -86,14 +86,14 @@ def depthfirst(configInicial,configFinal,max_depth):
         return 'Your inicial state is the same as the final one, so no calculation is needed.'
     descendants = makedescendants(configInicial,visited_nodes)
     visited_nodes.append(['',configInicial])
-    return depthfirst2(descendants,configFinal,visited_nodes,tempo,[],max_depth,0,len(visited_nodes))
+    return depthfirst2(descendants,configFinal,visited_nodes,tempo,[],max_depth,0,len(visited_nodes), max_seconds)
 
-def depthfirst2(configInicial,configFinal,vnodes,tempo,path,max_depth,depth,memory):
+def depthfirst2(configInicial,configFinal,vnodes,tempo,path,max_depth,depth,memory, max_seconds):
     path.append([])
     queue = copy(configInicial)
     visited_nodes = copy(vnodes)
     visited_nodes.append([])
-    if depth>=max_depth:
+    if depth>=max_depth or time.time()-tempo>max_seconds:
         return memory
     while queue!=[]:
         node = queue[0][1]
