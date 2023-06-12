@@ -37,4 +37,11 @@ tests = {
 }
 
 for depth in tests.keys():
-  print()
+    test = [tests[depth]['Inicial'], tests[depth]['Inicial']]
+    print(bfs(*test))
+    print(depthfirst(*test, max_depth=1000))
+    print(depth_firsti(*test))
+    print(greedy_h1(*test))
+    print(greedy_h2(*test))
+    print(Astar_h1(*test))
+    print(Astar_h2(*test))
