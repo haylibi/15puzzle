@@ -1,3 +1,5 @@
+from auxiliar_functions import *
+
 #Definicoes das jogadas (esquerda/direita/baixo/cima)
 def left(A):
     K=copy(A)
