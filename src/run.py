@@ -38,10 +38,11 @@ tests = {
 
 for depth in tests.keys():
     test = [tests[depth]['Inicial'], tests[depth]['Inicial']]
-    print(bfs(*test))
-    print(depthfirst(*test, max_depth=1000))
-    print(depth_firsti(*test))
-    print(greedy_h1(*test))
-    print(greedy_h2(*test))
-    print(Astar_h1(*test))
-    print(Astar_h2(*test))
+    print('Algorithm bfs: ', bfs(*test))
+    print('Algorithm depthfirst: ', depthfirst(*test, max_depth=1000))
+    print('Algorithm depth_firsti: ', depth_firsti(*test))
+    print('Algorithm greedy_h1: ', greedy_h1(*test))
+    print('Algorithm greedy_h2: ', greedy_h2(*test))
+    print('Algorithm Astar_h1: ', Astar_h1(*test))
+    print('Algorithm Astar_h2: ', Astar_h2(*test))
+
