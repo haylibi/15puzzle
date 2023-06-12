@@ -1,2 +1,12 @@
-# 15puzzle
-Developing multiple searches (BFS/DFS/A*/etc) to solve the 15 puzzle
+# 15 Puzzle
+Solving the 15 puzzle using Python.
+
+# Searches defined
+* BFS
+* A*
+* DFS
+* DFS Iterative
+* Greedy
+
+
+
