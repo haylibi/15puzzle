@@ -87,34 +87,3 @@ def copia(n):
         A.append([])
         A[i] = n[i]
     return A
-
-
-#Implementacao dos comandos para as buscas diferentes
-def makedescendants(node,visited_nodes):
-    '''Partindo dum vertice arbitrario, este comando gera uma lista com todos os vertices a que este se liga'''
-    A=[['l',left(node)],['r',right(node)],['d',down(node)],['u',up(node)]]
-    K=[]
-    for i in range(len(A)):
-       X = find_aux(A[i][1],visited_nodes)
-       if X == []:
-           K.append(A[i])
-    return K
-
-def findpath(vnodes,configFinal,path):
-    visited_nodes=copy(vnodes)
-    A=find_aux(configFinal,visited_nodes)
-    visited_nodes.remove([A,configFinal])
-    if A=='u':
-        path.append('u')
-        return findpath(visited_nodes,down(configFinal),path)
-    if A=='d':
-        path.append('d')
-        return findpath(visited_nodes,up(configFinal),path)
-    if A=='r':
-        path.append('r')
-        return findpath(visited_nodes,left(configFinal),path)
-    if A=='l':
-        path.append('l')
-        return findpath(visited_nodes,right(configFinal),path)
-    else:
-        return path
