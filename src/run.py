@@ -37,7 +37,7 @@ tests = {
 }
 
 for depth in tests.keys():
-    test = [tests[depth]['Inicial'], tests[depth]['Inicial']]
+    test = [tests[depth]['Inicial'], tests[depth]['Final']]
     print(f'\n{"=":=^50s}\n\n{depth:^50s}\n\n{"=":=^50s}')
     print('    Algorithm bfs: ', bfs(*test))
     print('    Algorithm depthfirst: ', depthfirst(*test, max_depth=1000, max_seconds=10000))
