@@ -1,4 +1,5 @@
 from auxiliar_functions import *
+from moves import *
 
 
 #Implementacao dos comandos para as buscas diferentes
